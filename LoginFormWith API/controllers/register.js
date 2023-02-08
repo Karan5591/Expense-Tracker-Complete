@@ -28,8 +28,8 @@ exports.check= async(req, res)=>{
             
                else if (data[0].password!=pass)
                {
-                res.send(`<html><body><h2>Incorrect Password</h2> <br><br> <a href='/'>Go back to home</a></body></html>`);
-               }
+                res.sendStatus(401);   
+                           }
                 else if(data[0].Email!=email)
                 {
                     res.send(`<html><body><h2>Incorrect email</h2> <br><br> <a href='/'>Go back to home</a></body></html>`);
