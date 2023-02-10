@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Expense Data</title>
+</head>
+
+<div style="width:100%; height: 100vh;  background: linear-gradient(to bottom, #ffcccc 0%, #ffff66 100%);">
+  <br>
+  <br>
+  <br>
+  <body>
+  <div class="container">
+      
+  <h3 style="text-align: center;">Enter Expense Details</h3>
+  <form  action="/AddExpense" method="post">
+      
+  <label>Amount</label>
+  <input type="number" class="form-control" required="true" name="amount"><br>
+
+  
+  <label>Description</label>
+  <input type="text" class="form-control" required="true" name="description"><br>
+
+  <label>Category:</label><br>
+  <select name="category" class="form-control">
+      <option value="Movies">Movies</option>
+      <option value="Food">Food</option>
+      <option value="Electricity">Electricity</option>
+      <option value="Bill">Bill</option>
+      <option value="Other">Other</option>
+  </select><br><br>
+  
+  
+  <button>Submit</button>
+</form><br><br>
+   
+         <table style="border: 1px solid; width:50%;" >
+                
+                  <tr>
+                    
+                    <th style="text-align: left; ; width:20%" >Amount</th>
+                    <th style=" text-align: left; width:20%;">Description</th>
+                    <th style="text-align: left; width:20%" >Category</th>
+                    <th style="text-align: left; width:20%" >Action</th>
+                    
+                  </tr>
+                </table>
+            
+                <% if(result.length>0){ %>
+
+        
+                    <%result.map((eachData)=>{ %>
+             <table style="border: 1px solid; width: 50%;">
+                
+                  <tr>
+                    
+                    <td style="  width:20%"><%-eachData.Amount %></td>
+                    <td style="  width:20% "><%-eachData.Description %></td>
+                    <td style="  width:20% "><%-eachData.Category %></td>
+                    <td style="  width:20% "><a href="/deleteData?expenseID= <%-eachData.expenseID%>">Delete</a>&nbsp;&nbsp;&nbsp; <a href="/update?ID= <%-eachData.ID%>">Edit</a></td>
+                    
+                  </tr>
+                  
+                
+              </table>
+
+            
+        
+        <% }) %> <%} else { %>
+            <div>
+              
+                <h3 >No Data Found</h3>
+  </div>
+  <% } %>
+
+  </div>
+
+</body>
+</div>
+</html>
